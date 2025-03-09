@@ -1,0 +1,23 @@
+catalog_name: mlops_dev
+schema_name: wichertw
+env: databricks
+experiment_name_basic: /Shared/airline-delay-basic
+experiment_name_fe: /Shared/airline-delay-fe
+
+numerical_features:
+  - Flight
+  - DayOfWeek
+  - Time
+  - Length
+
+categorical_features:
+  - Airline
+  - AirportFrom
+  - AirportTo
+
+target: Delay
+
+parameters:
+  learning_rate: 0.01
+  n_estimators: 1000
+  max_depth: 6
