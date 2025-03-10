@@ -1,8 +1,8 @@
 # Databricks notebook source
-!pip install /Volumes/mlops_dev/wichertw/packages/airline_delay-0.0.1-py3-none-any.whl
+# !pip install /Volumes/mlops_dev/wichertw/packages/airline_delay-0.0.1-py3-none-any.whl
 
 # COMMAND ----------
-%restart_python
+# %restart_python
 
 # COMMAND ----------
 import os

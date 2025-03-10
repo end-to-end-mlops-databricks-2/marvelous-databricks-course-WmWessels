@@ -1,9 +1,9 @@
 import mlflow
+import numpy as np
 import pandas as pd
 from lightgbm import LGBMClassifier
 from loguru import logger
 from mlflow import MlflowClient
-import numpy as np
 from mlflow.models import infer_signature
 from pyspark.sql import SparkSession
 from sklearn.compose import ColumnTransformer
@@ -73,7 +73,10 @@ class BasicModel:
         """
         logger.info("🔄 Defining preprocessing pipeline...")
         self.preprocessor = ColumnTransformer(
-            transformers=[("cat", OrdinalEncoder(handle_unknown="use_encoded_value", unknown_value=np.nan), self.cat_features)], remainder="passthrough"
+            transformers=[
+                ("cat", OrdinalEncoder(handle_unknown="use_encoded_value", unknown_value=np.nan), self.cat_features)
+            ],
+            remainder="passthrough",
         )
 
         self.pipeline = Pipeline(
@@ -187,7 +190,7 @@ class BasicModel:
 
         # Return predictions as a DataFrame
         return predictions
-    
+
     def model_improved(self) -> bool:
         predictions_latest = self.load_latest_model_and_predict(self.X_test)
 
@@ -206,5 +209,3 @@ class BasicModel:
         else:
             logger.info("Keeping latest model")
             return False
-
-        
